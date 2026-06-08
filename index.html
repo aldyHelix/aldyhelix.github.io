@@ -1,13 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aldy Satria Gumilar — Full Stack Software Engineer</title>
+<meta name="description" content="Aldy Satria Gumilar — Full Stack Software Engineer (Go, PHP, Node.js, TypeScript). Building high-performance, scalable systems and engineering with AI agents. Open to remote roles worldwide." />
+<meta name="author" content="Aldy Satria Gumilar" />
+<!-- Open Graph -->
+<meta property="og:title" content="Aldy Satria Gumilar — Full Stack Software Engineer" />
+<meta property="og:description" content="Backend-leaning Full Stack Engineer. Go · PHP · Node.js · TypeScript. Engineering with AI agents. Open to remote worldwide." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://aldyhelix.github.io/" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0b1120;
+    --bg-soft: #111a2e;
+    --card: #131c33;
+    --border: #1f2b48;
+    --text: #e6edf6;
+    --muted: #93a4c3;
+    --accent: #7aa2f7;     /* tokyonight blue */
+    --accent-2: #bb9af7;   /* purple */
+    --accent-3: #7dcfff;   /* cyan */
+    --green: #9ece6a;
+    --radius: 16px;
+    --maxw: 1040px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: radial-gradient(1200px 600px at 80% -10%, #1b2540 0%, transparent 60%),
+                radial-gradient(1000px 500px at -10% 10%, #1a1830 0%, transparent 55%),
+                var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent-3); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(12px);
+    background: rgba(11,17,32,0.72);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .brand { font-weight: 800; letter-spacing: -0.02em; font-size: 1.05rem; }
+  .brand span { color: var(--accent); }
+  .nav-links { display: flex; gap: 26px; }
+  .nav-links a { color: var(--muted); font-size: .92rem; font-weight: 500; }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+  @media (max-width: 640px) { .nav-links { display: none; } }
+
+  /* HERO */
+  header { padding: 90px 0 70px; }
+  .status {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(158,206,106,0.1); border: 1px solid rgba(158,206,106,0.35);
+    color: var(--green); padding: 6px 14px; border-radius: 999px;
+    font-size: .82rem; font-weight: 600; margin-bottom: 22px;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgba(158,206,106,0.7); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(158,206,106,.6);} 70%{box-shadow:0 0 0 10px rgba(158,206,106,0);} 100%{box-shadow:0 0 0 0 rgba(158,206,106,0);} }
+  header h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+  header h1 .grad {
+    background: linear-gradient(120deg, var(--accent), var(--accent-2) 60%, var(--accent-3));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  header .role { margin-top: 14px; font-size: clamp(1.05rem,2.5vw,1.4rem); color: var(--muted); font-weight: 500; }
+  header .tagline { margin-top: 18px; max-width: 640px; color: var(--muted); font-size: 1.05rem; }
+  .cta { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 14px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 22px; border-radius: 12px; font-weight: 600; font-size: .95rem;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); text-decoration: none; }
+  .btn-primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #0b1120; box-shadow: 0 8px 24px -8px rgba(122,162,247,.6); }
+  .btn-ghost { border: 1px solid var(--border); color: var(--text); background: var(--card); }
+
+  .meta-row { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .chip { display:inline-flex; align-items:center; gap:8px; background: var(--card); border: 1px solid var(--border); color: var(--muted); padding: 8px 14px; border-radius: 10px; font-size: .85rem; }
+  .chip b { color: var(--text); font-weight: 600; }
+
+  /* SECTIONS */
+  section { padding: 60px 0; border-top: 1px solid var(--border); }
+  .sec-label { color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: .8rem; letter-spacing: .15em; text-transform: uppercase; }
+  .sec-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; margin: 8px 0 28px; }
+  .lead { color: var(--muted); max-width: 720px; margin-bottom: 28px; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 18px; }
+  .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
+  .skill-card h3 { font-size: 1rem; margin-bottom: 14px; display:flex; align-items:center; gap:8px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-family:'JetBrains Mono', monospace; font-size: .78rem; padding: 5px 10px; border-radius: 8px; background: var(--bg-soft); border: 1px solid var(--border); color: var(--accent-3); }
+
+  /* AI CALLOUT */
+  .ai-card {
+    background: linear-gradient(135deg, rgba(187,154,247,.08), rgba(122,162,247,.06));
+    border: 1px solid rgba(187,154,247,.3); border-radius: var(--radius); padding: 28px;
+  }
+  .ai-list { list-style: none; display: grid; gap: 14px; margin-top: 8px; }
+  .ai-list li { padding-left: 26px; position: relative; color: var(--muted); }
+  .ai-list li::before { content: "▹"; position: absolute; left: 0; color: var(--accent-2); }
+  .ai-list b { color: var(--text); }
+
+  /* PROJECTS */
+  .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 18px; }
+  .proj {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px;
+    display: flex; flex-direction: column; transition: transform .15s ease, border-color .15s ease;
+  }
+  .proj:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .proj .top { display:flex; align-items:center; justify-content:space-between; margin-bottom: 12px; }
+  .proj .ico { font-size: 1.5rem; }
+  .proj .langs { display:flex; gap:6px; }
+  .proj h3 { font-size: 1.1rem; margin-bottom: 8px; }
+  .proj p { color: var(--muted); font-size: .92rem; flex: 1; }
+  .proj a.link { margin-top: 16px; font-family:'JetBrains Mono',monospace; font-size: .82rem; font-weight: 600; }
+
+  /* CONTACT */
+  .contact { text-align: center; }
+  .contact .sec-title { margin-bottom: 12px; }
+  .contact-links { display:flex; flex-wrap:wrap; justify-content:center; gap: 14px; margin-top: 24px; }
+
+  footer { padding: 40px 0 60px; text-align: center; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--border); }
+  footer .mono { color: var(--accent-3); }
+</style>
 </head>
 <body>
-    initial commit!
-    <br>
-    New Personal Profile Project Begin Here! 
+
+<nav>
+  <div class="wrap">
+    <div class="brand">aldy<span>.</span>helix</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#ai">AI Engineering</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="status"><span class="dot"></span> Open to remote roles worldwide · GMT+7</div>
+    <h1>Aldy Satria Gumilar<br/><span class="grad">Full Stack Software Engineer</span></h1>
+    <p class="role">Backend-leaning · Go · PHP · Node.js · TypeScript</p>
+    <p class="tagline">I build high-performance, scalable systems — and engineer with AI agents, not just use them. Turning complex, ambiguous problems into elegant, well-tested solutions.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#contact">Get in touch →</a>
+      <a class="btn btn-ghost" href="https://github.com/aldyHelix" target="_blank" rel="noopener">View GitHub</a>
+    </div>
+    <div class="meta-row">
+      <span class="chip">📍 <b>Indonesia</b> (GMT+7)</span>
+      <span class="chip">🗣 <b>English</b> · Professional working</span>
+      <span class="chip">🕘 Overlaps <b>APAC / EU / US</b></span>
+      <span class="chip">🤝 <b>Remote</b> & freelance</span>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-label">// about</div>
+    <h2 class="sec-title">Engineering that scales</h2>
+    <p class="lead">
+      I'm a Full Stack Software Engineer focused on the backend — designing APIs, microservices, and
+      data-heavy pipelines that stay fast under load. I care about clean architecture (SOLID,
+      repository &amp; service-layer patterns), performance optimization, and shipping maintainable code.
+      I currently build enterprise solutions at <b>Celerates</b>, and I work async-first with teams
+      across time zones.
+    </p>
+    <div class="meta-row">
+      <span class="chip">⚡ Performance optimization</span>
+      <span class="chip">🧱 Clean architecture · SOLID</span>
+      <span class="chip">🔌 REST · gRPC · API gateways</span>
+      <span class="chip">📊 Agile / Scrum delivery</span>
+      <span class="chip">👥 Mentoring</span>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-label">// skills</div>
+    <h2 class="sec-title">Tech stack</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>🧩 Languages</h3>
+        <div class="tags">
+          <span class="tag">Go</span><span class="tag">PHP</span><span class="tag">Node.js</span>
+          <span class="tag">TypeScript</span><span class="tag">Python</span><span class="tag">Dart</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>⚙️ Frameworks</h3>
+        <div class="tags">
+          <span class="tag">Gin</span><span class="tag">Laravel</span><span class="tag">Express</span>
+          <span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Flutter</span><span class="tag">Tailwind</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>🗄️ Data &amp; Infra</h3>
+        <div class="tags">
+          <span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">gRPC</span>
+          <span class="tag">KrakenD</span><span class="tag">Docker</span><span class="tag">CI/CD</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>🏛️ Architecture</h3>
+        <div class="tags">
+          <span class="tag">Microservices</span><span class="tag">REST</span><span class="tag">Worker queues</span>
+          <span class="tag">SOLID</span><span class="tag">DB optimization</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ai">
+  <div class="wrap">
+    <div class="sec-label">// ai engineering</div>
+    <h2 class="sec-title">Engineering with AI &amp; LLMs</h2>
+    <div class="ai-card">
+      <p class="lead" style="margin-bottom:6px;">
+        I don't just <i>use</i> AI assistants — I treat LLMs as a programmable layer of the stack and
+        study how to drive them reliably. Actively leveling up on:
+      </p>
+      <ul class="ai-list">
+        <li><b>Prompt engineering for code</b> — task decomposition, few-shot &amp; schema-constrained
+          structured outputs, eval-driven prompting, and reducing hallucination on programming tasks.</li>
+        <li><b>Agentic workflows</b> — multi-step agents with tool use, planning/execution loops, and
+          verification gates; orchestrating parallel sub-agents for research, review, and refactoring.</li>
+        <li><b>AI-assisted development in practice</b> — daily work with <b>Claude Code</b> and agentic
+          harnesses to plan, generate, review, and test code under TDD and code-review loops.</li>
+        <li><b>LLM application patterns</b> — the <b>Claude API</b> (Messages, tool use, streaming,
+          prompt caching), RAG, cost-aware model routing, and MCP-style tool servers.</li>
+      </ul>
+      <p style="margin-top:18px; color:var(--text); font-weight:600;">
+        🎯 Goal: ship production software where AI agents handle a large share of implementation
+        under tight, human-defined specs, tests, and review gates — faster, without sacrificing quality.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-label">// projects</div>
+    <h2 class="sec-title">Featured work</h2>
+    <div class="proj-grid">
+
+      <div class="proj">
+        <div class="top"><span class="ico">⚡</span><span class="langs"><span class="tag">Go</span></span></div>
+        <h3>High-Performance CSV → PostgreSQL Importer</h3>
+        <p>Concurrent Go importer handling 1M+ records with optimized PostgreSQL bulk-insert and worker pooling for throughput.</p>
+        <a class="link" href="https://github.com/aldyhelix/golang_import_large_csv_pgsql" target="_blank" rel="noopener">View repo →</a>
+      </div>
+
+      <div class="proj">
+        <div class="top"><span class="ico">💸</span><span class="langs"><span class="tag">Go</span><span class="tag">PHP</span></span></div>
+        <h3>J&amp;T Cashback Service</h3>
+        <p>Cashback upload &amp; processing split across a Go ingestion worker and a PHP application layer — a production-style microservice pairing.</p>
+        <a class="link" href="https://github.com/aldyhelix/jnt-cashback-upload-service" target="_blank" rel="noopener">View repo →</a>
+      </div>
+
+      <div class="proj">
+        <div class="top"><span class="ico">🚪</span><span class="langs"><span class="tag">Node.js</span></span></div>
+        <h3>KrakenD API Gateway Playground</h3>
+        <p>Monorepo exploring API gateway patterns — routing, aggregation, and ingress configuration with KrakenD.</p>
+        <a class="link" href="https://github.com/aldyhelix/krakend-playground-monorepo" target="_blank" rel="noopener">View repo →</a>
+      </div>
+
+      <div class="proj">
+        <div class="top"><span class="ico">📨</span><span class="langs"><span class="tag">Go</span><span class="tag">gRPC</span></span></div>
+        <h3>gRPC Subscription Worker</h3>
+        <p>File-processing worker using gRPC for inter-service communication in a subscription pipeline.</p>
+        <a class="link" href="https://github.com/aldyhelix/dummy-subscription-worker-file-processing-grpc" target="_blank" rel="noopener">View repo →</a>
+      </div>
+
+      <div class="proj">
+        <div class="top"><span class="ico">📚</span><span class="langs"><span class="tag">Flutter</span></span></div>
+        <h3>Bbook — Educational Mobile App</h3>
+        <p>Cross-platform Flutter app delivering student study material on the pre-historic age.</p>
+        <a class="link" href="https://github.com/aldyhelix/bbook" target="_blank" rel="noopener">View repo →</a>
+      </div>
+
+      <div class="proj">
+        <div class="top"><span class="ico">📖</span><span class="langs"><span class="tag">Go</span></span></div>
+        <h3>Go Cheat Sheet</h3>
+        <p>A curated, hand-crafted Golang reference of practical snippets for fast lookup.</p>
+        <a class="link" href="https://github.com/aldyhelix/golang-cheat-sheet" target="_blank" rel="noopener">View repo →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="sec-label">// contact</div>
+    <h2 class="sec-title">Let's build something that scales</h2>
+    <p class="lead" style="margin: 0 auto;">Open to remote opportunities worldwide and freelance projects. The fastest way to reach me is email or LinkedIn.</p>
+    <div class="contact-links">
+      <a class="btn btn-primary" href="mailto:aldy.satria07@gmail.com">📧 aldy.satria07@gmail.com</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/aldy-satria/" target="_blank" rel="noopener">💼 LinkedIn</a>
+      <a class="btn btn-ghost" href="https://github.com/aldyHelix" target="_blank" rel="noopener">🐙 GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Built by Aldy Satria Gumilar · <span class="mono">Go · TypeScript · AI-assisted</span></p>
+    <p style="margin-top:6px;">© <span class="mono">2026</span> · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+
 </body>
 </html>
